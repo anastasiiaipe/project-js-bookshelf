@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.books-box-itm {
+  display: none;
+}
+
 /* =========================MOBILE ===========================*/
 
 @media sreen and (min-width: 375px) {
@@ -24,7 +28,6 @@
 }
 
 .categories-box {
-  width: 335px;
 }
 .categories-list {
   display: flex;
@@ -34,9 +37,9 @@
   overflow-y: scroll;
   height: 228px;
   margin-bottom: 40px;
+  width: 335px;
 }
 .categories-itm {
-  font-family: 'DM Sans', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.125;
@@ -48,26 +51,40 @@
   margin: 0 auto;
 }
 .books-box-title {
-  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 32px;
   line-height: 1.1875;
   letter-spacing: -0.04em;
   color: #111;
+  margin-bottom: 40px;
 }
 .books-title-span {
   color: #4f2ee8;
 }
 .books-box-holder {
+  width: 335px;
+  margin-bottom: 40px;
 }
 .books-box-subtitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #b4afaf;
+  margin-bottom: 18px;
 }
 .books-box-list {
 }
+.books-box-itm:nth-child(1) {
+  display: block;
+}
+
 .books-box-itm {
+  cursor: pointer;
 }
 .books-box-wrap {
-  width: 375px;
+  width: 335px;
   height: 485px;
   border-radius: 8px;
   object-fit: cover;
@@ -79,7 +96,7 @@
   height: 100%;
   object-fit: cover;
 }
-.overlay {
+.books-box-wrap .overlay {
   position: absolute;
   top: 100%;
   left: 0;
@@ -100,12 +117,45 @@
   height: 70px;
 }
 .books-box-desc {
+  margin-top: 14px;
 }
 .books-box-desc-title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.125;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #111;
+  margin-bottom: 4px;
 }
 .books-box-desc-author {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16667;
+  letter-spacing: -0.04em;
+  color: #b4afaf;
 }
 .books-btn-see-more {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #111;
+  border: 2px solid #4f2ee8;
+  background-color: inherit;
+  border-radius: 40px;
+  width: 124px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ==================TABLET================= */
@@ -118,18 +168,51 @@
   }
 
   .categories-box {
-    width: 309px;
   }
 
   .categories-list {
     gap: 32px;
     height: 472px;
+    width: 337px;
     margin-bottom: 100px;
   }
 
   .categories-itm {
     font-size: 18px;
     line-height: 1.33333;
+  }
+
+  .books-box-title {
+    font-size: 48px;
+    line-height: 1.08333;
+  }
+
+  .books-box-holder {
+    display: grid;
+  }
+
+  .books-box-subtitle {
+    line-height: 1.71429;
+  }
+  .books-box-wrap {
+    width: 218px;
+    height: 316px;
+  }
+
+  .books-box-list {
+    display: flex;
+    gap: 25px;
+  }
+
+  .books-box-itm:nth-child(-n + 3) {
+    display: block;
+  }
+
+  .books-box-desc {
+  }
+
+  .books-btn-see-more {
+    margin-top: 20px;
   }
 }
 
@@ -140,13 +223,40 @@
     max-width: 1440px;
     padding-left: 24px;
     padding-right: 24px;
+    display: flex;
+    gap: 40px;
   }
 
   .categories-box {
-    width: 356px;
   }
 
   .categories-list {
     margin-bottom: 86px;
+    width: 356px;
+  }
+
+  .books-box {
+    margin: 0;
+    width: 100%;
+  }
+  .books-box-holder {
+    min-width: 996px;
+  }
+
+  .books-box-list {
+    gap: 24px;
+  }
+
+  .books-box-itm {
+    display: block;
+  }
+
+  .books-box-wrap {
+    width: 180px;
+    height: 256px;
+  }
+
+  .books-btn-see-more {
+    margin-top: 32px;
   }
 }
