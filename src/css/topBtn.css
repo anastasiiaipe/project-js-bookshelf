@@ -21,7 +21,10 @@
   transition: all 150ms ease-in-out;
 
   &:hover {
-    color: #111;
     box-shadow: 0 0 10px 0 #eac645 inset, 0 0 10px 4px #eac645;
   }
+}
+
+.dark .top-btn {
+  color: #fff;
 }
