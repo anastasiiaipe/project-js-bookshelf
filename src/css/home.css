@@ -169,7 +169,7 @@ body {
 
 .books-overlay-text {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 22px;
   line-height: 1.3;
   letter-spacing: -0.04em;
   text-transform: uppercase;
@@ -301,6 +301,10 @@ body {
     padding-top: 12%;
   }
 
+  .books-overlay-text {
+    font-size: 18px;
+  }
+
   .books-btn-see-more {
     margin-top: 20px;
   }
@@ -362,6 +366,9 @@ body {
     padding-top: 11%;
   }
 
+  .books-overlay-text {
+    font-size: 14px;
+  }
   .books-btn-see-more {
     margin-top: 32px;
   }
