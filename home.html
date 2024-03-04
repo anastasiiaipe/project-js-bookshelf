@@ -16,8 +16,9 @@
       href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
     />
     
-    <script type="module" crossorigin src="/project-js-bookshelf/assets/topBtn-e246ed84.js"></script>
-    <link rel="stylesheet" href="/project-js-bookshelf/assets/topBtn-ad2b4062.css">
+    <script type="module" crossorigin src="/project-js-bookshelf/assets/vendor-0cb09735.js"></script>
+    <script type="module" crossorigin src="/project-js-bookshelf/assets/main-b6d3c67e.js"></script>
+    <link rel="stylesheet" href="/project-js-bookshelf/assets/main-6f819ec9.css">
   </head>
   <body>
     <a href="./index.html">Go to start</a>
@@ -26,7 +27,7 @@
   <!-- Desctop-Tablet-Container -->
   <div class="header-container">
     <!-- Logo -->
-    <a href="/src/index.html" class="header-logo-link">
+    <a href="./home.html" class="header-logo-link">
       <svg class="header-logo" width="24" height="24">
         <use href="./img/sprite.svg#icon-logo-1"></use>
       </svg>
@@ -136,19 +137,22 @@
     <div class="container">
       <div class="categories-box">
         <ul class="categories-list">
-          <li class="categories-itm js-categories-current">All categories</li>
-          <li class="categories-itm">Combined Print and E-Book Nonfiction</li>
+          <!-- <li class="categories-itm js-categories-current">All categories</li> -->
+          <li class="categories-itm js-categories-current">
+            <a href="#" data-categorieName="all categories">All categories</a>
+          </li>
+          <!-- <li class="categories-itm">Combined Print and E-Book Nonfiction</li> -->
         </ul>
       </div>
       <div class="books-box">
         <!-- ==========title ============-->
-        <h2 class="books-box-title">
+        <!-- <h2 class="books-box-title">
           Best Sellers <span class="books-title-span">Books</span>
-        </h2>
+        </h2> -->
         <!-- ================================= -->
 
         <!-- ======== home page - best sellers books ============= -->
-        <div class="books-box-holder">
+        <!-- <div class="books-box-holder">
           <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
           <ul class="books-box-list">
             <li class="books-box-itm" id="">
@@ -169,232 +173,12 @@
             </li>
           </ul>
           <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
-        <div class="books-box-holder">
-          <h3 class="books-box-subtitle">Advice How-To and Miscellaneous</h3>
-          <ul class="books-box-list">
-            <li class="books-box-itm" id="">
-              <div class="books-box-wrap">
-                <img
-                  class="books-img"
-                  src="https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg"
-                  alt=""
-                />
-                <div class="books-overlay">
-                  <p class="books-overlay-text">quick view</p>
-                </div>
-              </div>
-              <div class="books-box-desc">
-                <p class="books-box-desc-title">ATOMIC HABITS</p>
-                <p class="books-box-desc-author">James Clear</p>
-              </div>
-            </li>
-          </ul>
-          <button class="books-btn-see-more" type="button">see more</button>
-        </div>
+        </div> -->
 
         <!-- ===================================== -->
 
         <!-- ========second page - current category ============ -->
-        <div class="books-category-box visually-hidden">
+        <!-- <div class="books-category-box visually-hidden">
           <ul class="books-category-list">
             <li class="books-category-item">
               <div class="books-box-wrap">
@@ -413,10 +197,11 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="top-btn">Top</div>
+    
     
     
   </body>
