@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { renderTopBooks, renderCategoriesList, renderBooksByCategory } from './categories.js';
+import { renderTopBooks, renderCategoriesList, renderBooksByCategory } from './render-categories.js';
 
 const BASE_URL = 'https://books-backend.p.goit.global';
 
