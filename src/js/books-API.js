@@ -38,14 +38,14 @@ export const getBooksByCategory = async (categoryName = '') => {
 
   const data = await fetchData(endpoint);
   console.log('Category name3:', data);
-  return renderBooksByCategory(categoryName, data);
+  // return renderBooksByCategory(categoryName, data);
+  const dataArray = Object.values(data); // Преобразование объекта в массив
+  return renderBooksByCategory(dataArray);
 };
 
 export const getBookInfo = async (id) => {
   return fetchData(`/${id}`);
 };
-
-
 
 
 
