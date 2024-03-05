@@ -19,7 +19,7 @@ async function displayTopBooks() {
   try {
     const topBooks = await getTopBooks();
     const topBooksHTML = renderTopBooks(topBooks);
-    const topBooksContainer = document.querySelector('.top-books-box');
+    const topBooksContainer = document.querySelector('.books-box');
     topBooksContainer.innerHTML = topBooksHTML;
   } catch (error) {
     console.error('Error displaying top books:', error);
@@ -31,7 +31,7 @@ async function displayBooksByCategory(categoryName) {
   try {
     const books = await getBooksByCategory(categoryName);
     const booksHTML = renderBooksByCategory(categoryName, books);
-    const booksByCategoryContainer = document.querySelector('.books-by-category-box');
+    const booksByCategoryContainer = document.querySelector('.books-box');
     booksByCategoryContainer.innerHTML = booksHTML;
   } catch (error) {
     console.error('Error displaying books by category:', error);
