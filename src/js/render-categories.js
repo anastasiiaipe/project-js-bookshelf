@@ -56,7 +56,7 @@ export const renderBooksByCategory = data => {
   const categoryMarkup = data
     .map(el => {
       const books = renderOneBook(el);
-      return `<div class="books-category-box visually-hidden">
+      return `<div class="books-category-box">
       <h2 class="books-box-title">${el.list_name}</h2>
       <ul class="books-category-list">${books}</ul>
     </div>`;
