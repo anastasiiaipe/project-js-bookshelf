@@ -32,9 +32,6 @@ export const getBooksByCategory = async (categoryName = '') => {
   return renderBooksByCategory(data);
 };
 
-const books = await getBooksByCategory('fiction');
-console.log(books); // Проверьте, что данные категории "fiction" возвращаются правильно
-
 export const getBookInfo = async (id) => {
   return fetchData(`/${id}`);
 };
