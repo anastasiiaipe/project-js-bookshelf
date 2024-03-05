@@ -1,6 +1,6 @@
-// Импортируем функции из books-API.js и render-categories.js
-import { getCategoryList, getTopBooks, getBooksByCategory } from './books-API.js';
-import { renderCategoriesList, renderTopBooks, renderBooksByCategory } from './render-categories.js';
+// // Импортируем функции из books-API.js и render-categories.js
+// import { getCategoryList, getTopBooks, getBooksByCategory } from './books-API.js';
+// import { renderCategoriesList, renderTopBooks, renderBooksByCategory } from './render-categories.js';
 
 const booksContainer = document.querySelector('.books-box');
 const categoriesListContainer = document.querySelector('.categories-list');
