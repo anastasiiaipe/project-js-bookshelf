@@ -1,39 +1,35 @@
 
 import axios from "axios";
-import { renderTopBooks, renderCategoriesList, renderBooksByCategory } from './render-categories.js';
+// import { renderTopBooks, renderCategoriesList, renderBooksByCategory } from './render-categories.js';
 
-const BASE_URL = 'https://books-backend.p.goit.global';
+const BASE_URL = 'https://books-backend.p.goit.global/books';
 
 const fetchData = async (endpoint, params = null) => {
-  const fetchUrl = `${BASE_URL}/books${endpoint}`;
-
   try {
-    const response = await axios.get(fetchUrl, { params });
+    const response = await axios.get(`${BASE_URL}${endpoint}`, { params });
     console.log('Data from server:', response.data)
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error('Error fetching data:', error);
+    throw error; // Пробрасываем ошибку дальше для обработки в вызывающем коде
   }
 };
 
-export const getTopBooks = async (booksPerRow) => {
-  const data = await fetchData('/top-books/');
-  return renderTopBooks(data, booksPerRow);
-};
-
+// Получение списка категорий
 export const getCategoryList = async () => {
-  const data = await fetchData('/category-list/');
-  return renderCategoriesList(data);
+  return fetchData('/category-list');
 };
 
-
-export const getBooksByCategory = async (categoryName) => {
-  const data = await fetchData(`/category?category=${categoryName}`);
-     console.log('Category from server:', data.data);
-  return renderBooksByCategory(data);
+// Получение списка топовых книг
+export const getTopBooks = async () => {
+  return fetchData('/top-books');
 };
-
-
-export const getBookInfo = async (id) => {
+// Получение книг по категории
+export const getBooksByCategory = async (categoryName = '') => {
+  return fetchData('/category', { category: categoryName });
+};
+// Получение информации о книге по ID
+export const getBookById = async (id) => {
   return fetchData(`/${id}`);
 };
+
