@@ -1,12 +1,12 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-
 //Render one book
 function renderOneBook(books) {
-    const booksRendered = books.map(el => {
-        const {_id, book_image, title, author} = el;
-        return `<li class="books-box-itm" id="${_id}">
+  const booksRendered = books
+    .map(el => {
+      const { _id, book_image, title, author } = el;
+      return `<li class="books-box-itm" id="${_id}">
       <div class="books-box-wrap">
               <img
                 class="books-img"
@@ -23,56 +23,59 @@ function renderOneBook(books) {
               <p class="books-box-desc-author">${author}</p>
             </div> 
             </li>`;
-    }).join('');
+    })
+    .join('');
 
-    return booksRendered;
-} 
+  return booksRendered;
+}
 
 //Render top books
 export const renderTopBooks = (data, booksPerRow) => {
-  if (!data || data.length === 0){
+  if (!data || data.length === 0) {
     const emptyCategoryHtml = `<div class="books-box"><h2 class="books-box-title">Best Sellers Books</h2>
-    </div>${getEmtyCategoryHtml()}`; 
+    </div>${getEmtyCategoryHtml()}`;
     return emptyCategoryHtml;
-  }
-  else{
-    const categoriesTopBooks = data.map(el => {
+  } else {
+    const categoriesTopBooks = data
+      .map(el => {
         const categoryName = el.list_name;
-        const books = renderOneBook(el.books.slice(0, booksPerRow))
+        const books = renderOneBook(el.books.slice(0, booksPerRow));
         return `<div class="books-box-holder">
         <h3 class="books-box-subtitle">${categoryName}</h3>
          <ul class="books-box-list">${books}</ul>
            <button data-categoryName="${categoryName}" class="books-btn-see-more" type="button">see more</button>
       </div>`;
-    }).join('');
+      })
+      .join('');
 
     return `<h2 class="books-box-title">Best Sellers Books</h2>${categoriesTopBooks}`;
   }
-}
+};
 
 //Render categories
-export const renderCategoriesList = (data) => {
-  const categoriesItems = data.sort((a, b) => {
-    if (a.list_name < b.list_name) {
-      return -1;
-    }
-    if (a.list_name > b.list_name) {
-      return 1;
-    }
-    return 0;
-  })
-  .map(el => {
-    return `<li class="categories-itm"><a href="#" data-categoryName="${el.list_name}">${el.list_name}</a></li>`;
-  }).join('');
+export const renderCategoriesList = data => {
+  const categoriesItems = data
+    .sort((a, b) => {
+      if (a.list_name < b.list_name) {
+        return -1;
+      }
+      if (a.list_name > b.list_name) {
+        return 1;
+      }
+      return 0;
+    })
+    .map(el => {
+      return `<li class="categories-itm"><a href="#" data-categoryName="${el.list_name}">${el.list_name}</a></li>`;
+    })
+    .join('');
 
   return ` <li class="categories-itm js-categories-current ">
   <a href="#" data-categoryName="all categories">All categories</a></li>${categoriesItems}`;
-}
+};
 
-function getEmtyCategoryHtml(){
+function getEmtyCategoryHtml() {
   iziToast.error({
-    message:
-      'Sorry, no books found.',
+    message: 'Sorry, no books found.',
     position: 'topRight',
   });
 
@@ -84,25 +87,22 @@ function getEmtyCategoryHtml(){
 
 //Render category books
 export const renderBooksByCategory = (data, categoryName) => {
-    if (!data || data.length === 0){
-        const emptyCategoryHtml = `<div class="books-box">
+  if (!data || data.length === 0) {
+    const emptyCategoryHtml = `<div class="books-box">
         <h2 class="books-box-title">${categoryName}</h2>
-        </div>${getEmtyCategoryHtml()}`; 
+        </div>${getEmtyCategoryHtml()}`;
 
-        return emptyCategoryHtml;
-    }  
-    else{
-      const books = renderOneBook(data)
+    return emptyCategoryHtml;
+  } else {
+    const books = renderOneBook(data);
     const categoryHtml = `<h2 class="books-box-title">${categoryName}</h2>
-    <div class="books-box-holder">
-      <ul class="books-list">${books}</ul>
+    <div class="books-category-box">
+      <ul class="books-category-list">${books}</ul>
     </div>`;
-  
-      return categoryHtml;
-    }
-}
 
-
+    return categoryHtml;
+  }
+};
 
 // //Render one book
 // function renderOneBook(books) {
@@ -124,7 +124,7 @@ export const renderBooksByCategory = (data, categoryName) => {
 //             <div class="books-box-desc">
 //               <p class="books-box-desc-title">${title}</p>
 //               <p class="books-box-desc-author">${author}</p>
-//             </div> 
+//             </div>
 //             </li>`;
 //     })
 //     .join('');
@@ -191,7 +191,7 @@ export const renderBooksByCategory = (data, categoryName) => {
 // //               <div class="books-box-desc">
 // //                 <p class="books-box-desc-title">${title}</p>
 // //                 <p class="books-box-desc-author">${author}</p>
-// //               </div> 
+// //               </div>
 // //               </li>`;
 // //     })
 // //     .join('');

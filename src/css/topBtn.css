@@ -12,16 +12,16 @@
   line-height: 1.28571;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: #111;
-  border: 2px solid #eac645;
-  background-color: inherit;
+  color: #ffffff;
+  border: 2px solid rgba(79, 46, 232, 0.3);
+  background-color: #4f2ee8;
   border-radius: 40px;
   overflow: hidden;
 
   transition: all 150ms ease-in-out;
 
   &:hover {
-    box-shadow: 0 0 10px 0 #eac645 inset, 0 0 10px 4px #eac645;
+    box-shadow: 0 0 10px 0 #4f2ee8 inset, 0 0 10px 4px #4f2ee8;
   }
 }
 
