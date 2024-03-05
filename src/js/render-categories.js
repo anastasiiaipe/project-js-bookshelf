@@ -49,7 +49,7 @@ export const renderCategoriesList = data => {
     })
     .join('');
 
-  return `<li class="categories-itm js-categories-current "><a href="#" data-categoryName="">All categories</a></li>${categoriesItems}`;
+  return `<li class="categories-itm js-categories-current "><a href="#" data-categoryName="all categories">All categories</a></li>${categoriesItems}`;
 };
 //Render category books
 export const renderBooksByCategory = data => {
