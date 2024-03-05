@@ -27,10 +27,11 @@ export const getCategoryList = async () => {
 };
 
 
-export const getBooksByCategory = async (categoryName = '') => {
-  const data = await fetchData('/category/', { category: categoryName });
+export const getBooksByCategory = async (categoryName) => {
+  const data = await fetchData('/category?category=', categoryName );
   return renderBooksByCategory(data);
 };
+
 
 export const getBookInfo = async (id) => {
   return fetchData(`/${id}`);
