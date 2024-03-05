@@ -74,7 +74,7 @@ function handleCategoryClick(e) {
     const target = e.target;
     
     if (target.tagName === 'A') {
-        const categoryName = target.dataset.categoryName;
+        const categoryName = target.dataset.categorieName;
         
         categoriesListContainer.querySelector('.js-categories-current').classList.remove('js-categories-current');
         target.classList.add('js-categories-current');
@@ -95,7 +95,7 @@ function handleSeeMoreClick(e) {
     const target = e.target;
     
     if (target.classList.contains('books-btn-see-more')) {
-        const categoryName = target.dataset.categoryName;
+        const categoryName = target.dataset.categorieName;
         
         categoriesListContainer.querySelector('.js-categories-current').classList.remove('js-categories-current');
         categoriesListContainer.querySelector(`[data-categoryName="${categoryName}"]`).classList.add('js-categories-current');
