@@ -27,9 +27,16 @@ export const getCategoryList = async () => {
 };
 
 
+// export const getBooksByCategory = async (categoryName = '') => {
+//   const data = await fetchData('/category?category=', categoryName );
+//   return renderBooksByCategory(data);
+// };
+
 export const getBooksByCategory = async (categoryName = '') => {
-  const data = await fetchData('/category?category=', categoryName );
-  return renderBooksByCategory(data);
+  const encodedCategoryName = encodeURIComponent(categoryName);
+  const endpoint = `/category?category=${encodedCategoryName}`;
+  const data = await fetchData(endpoint);
+  return renderBooksByCategory(categoryName, data);
 };
 
 export const getBookInfo = async (id) => {
