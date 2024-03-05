@@ -35,6 +35,9 @@ export const getCategoryList = async () => {
 export const getBooksByCategory = async (categoryName = '') => {
   const encodedCategoryName = encodeURIComponent(categoryName);
   const endpoint = `/category?category=${encodedCategoryName}`;
+  console.log('Category name1:', categoryName);
+  console.log('Category name2:', encodedCategoryName);
+  console.log('Category name3:', endpoint);
   const data = await fetchData(endpoint);
   return renderBooksByCategory(categoryName, data);
 };
