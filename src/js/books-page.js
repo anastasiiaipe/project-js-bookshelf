@@ -74,12 +74,12 @@ function handleCategoryClick(e) {
     const target = e.target;
     
     if (target.tagName === 'A') {
-        const categoryName = target.dataset.categorieName;
+        const categoryName = target.dataset.categoryName;
         
         categoriesListContainer.querySelector('.js-categories-current').classList.remove('js-categories-current');
         target.classList.add('js-categories-current');
 
-        if (categoryName === '') {
+        if (categoryName === 'all categories') {
             // Якщо натиснуто "Усі категорії", показати TopBooks
             showTopBooks();
         } else {
@@ -95,7 +95,7 @@ function handleSeeMoreClick(e) {
     const target = e.target;
     
     if (target.classList.contains('books-btn-see-more')) {
-        const categoryName = target.dataset.categorieName;
+        const categoryName = target.dataset.categoryName;
         
         categoriesListContainer.querySelector('.js-categories-current').classList.remove('js-categories-current');
         categoriesListContainer.querySelector(`[data-categoryName="${categoryName}"]`).classList.add('js-categories-current');
