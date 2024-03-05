@@ -24,14 +24,18 @@ export const renderOneBook = (book) => {
 
 //Render top books
 export const renderTopBooks = (categorieName, books) => {
+  // Применяем renderOneBook к каждой книге и объединяем результаты в одну строку
+  const booksHTML = books.map(renderOneBook).join('');
+
   return `
     <div class="books-box-holder">
       <h3 class="books-box-subtitle">${categorieName}</h3>
-      <ul class="books-box-list">${books}</ul>
+      <ul class="books-box-list">${booksHTML}</ul>
       <button data-categorieName="${categorieName}" class="books-btn-see-more" type="button">see more</button>
     </div>
   `;
 };
+
 
 //Render categories
 export const renderCategoriesList = (categories) => {
@@ -44,10 +48,11 @@ export const renderCategoriesList = (categories) => {
 
 //Render category books
 export const renderBooksByCategory = (categoryName, books) => {
+  const booksHTML = books.map(renderOneBook).join('');
   return `
     <div class="books-category-box visually-hidden">
       <h2 class="books-box-title">${categoryName}</h2>
-      <ul class="books-category-list">${books}</ul>
+      <ul class="books-category-list">${booksHTML}</ul>
     </div>
   `;
 };
