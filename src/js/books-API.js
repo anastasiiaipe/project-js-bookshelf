@@ -28,7 +28,7 @@ export const getCategoryList = async () => {
 
 
 export const getBooksByCategory = async (categoryName = '') => {
-  const data = await fetchData('/category?category=', { category: categoryName });
+  const data = await fetchData('/category?category=', categoryName );
   return renderBooksByCategory(data);
 };
 
