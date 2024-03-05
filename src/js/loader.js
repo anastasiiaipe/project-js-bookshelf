@@ -2,11 +2,11 @@
 
 const loaderContainer = document.querySelector('.loader');
 
-function showLoader() {
+export function showLoader() {
   loaderContainer.classList.remove('visually-hidden');
 }
 
-function hideLoader() {
+export function hideLoader() {
   loaderContainer.classList.add('visually-hidden');
 }
 

@@ -110,9 +110,10 @@ body {
   margin-bottom: 40px;
 }
 
-.books-category-item {
+/* .books-category-item {
   cursor: pointer;
-}
+} */
+
 .books-category-item :hover .books-overlay {
   top: 78%;
 }
@@ -167,6 +168,10 @@ body {
   left: 0;
 }
 
+.books-overlay a {
+  display: block;
+}
+
 .books-overlay-text {
   font-weight: 500;
   font-size: 22px;
@@ -179,9 +184,12 @@ body {
 
 .books-box-desc {
   margin-top: 14px;
+  width: 335px;
 }
 
 .books-box-desc-title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.125;
@@ -189,15 +197,20 @@ body {
   text-transform: uppercase;
   color: #111;
   margin-bottom: 4px;
+
+  overflow: hidden;
 }
 
 .books-box-desc-author {
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-style: italic;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.16667;
   letter-spacing: -0.04em;
   color: #b4afaf;
+  overflow: hidden;
 }
 
 .books-btn-see-more {
@@ -296,6 +309,9 @@ body {
     width: 218px;
     height: 316px;
   }
+  .books-box-desc {
+    width: 218px;
+  }
 
   .books-box-wrap .books-overlay {
     padding-top: 12%;
@@ -360,6 +376,9 @@ body {
   .books-box-wrap {
     width: 180px;
     height: 256px;
+  }
+  .books-box-desc {
+    width: 180px;
   }
 
   .books-box-wrap .books-overlay {

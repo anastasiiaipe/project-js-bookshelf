@@ -1,77 +1,143 @@
+import { showLoader, hideLoader } from './loader.js';
+
 import {
   getTopBooks,
   getCategoryList,
   getBooksByCategory,
 } from './books-API.js';
 
-async function displayCategories() {
-  const categoriesContainer = document.querySelector('.categories-list');
+//function determine Books PerRow
+const BOOKS_PER_ROW_MAP = {
+  default: 3,
+  largeScreen: 5,
+  smallScreen: 1,
+};
 
-  // Отримуємо список категорій
-  const renderedCategories = await getCategoryList();
-
-  // Відображаємо категорії на сторінці
-  categoriesContainer.innerHTML = renderedCategories;
-
-  // Додаємо обробник подій для категорій
-  categoriesContainer.addEventListener('click', handleCategoryClick);
-
-  return categoriesContainer; // Повертаємо контейнер категорій
+function determineBooksPerRow(windowWidth) {
+  if (windowWidth >= 1440) {
+    return BOOKS_PER_ROW_MAP.largeScreen;
+  } else if (windowWidth < 768) {
+    return BOOKS_PER_ROW_MAP.smallScreen;
+  } else {
+    return BOOKS_PER_ROW_MAP.default;
+  }
 }
 
-// Додаємо обробник подій для кнопок "See more" у кожній категорії
-document.addEventListener('click', async function (event) {
-  if (event.target && event.target.classList.contains('books-btn-see-more')) {
-    const catName = event.target.dataset.categoryname;
-    console.log(catName);
-    await displayBooksByCategory(null, catName); // Передаємо другий аргумент
-  }
+const windowWidthStart = window.innerWidth;
+let ctrlBreikpoint = determineBooksPerRow(windowWidthStart);
+
+window.addEventListener('resize', () => {
+  const newWindowWidth = window.innerWidth;
+  ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
 });
 
-// Функція для обробки кліків на категорії
+//function show category
+async function displayCategories() {
+  showLoader();
+  const categoriesContainer = document.querySelector('.categories-list');
+
+  const renderedCategories = await getCategoryList();
+  categoriesContainer.innerHTML = renderedCategories;
+  categoriesContainer.addEventListener('click', handleCategoryClick);
+  hideLoader();
+  return categoriesContainer;
+}
+
 async function handleCategoryClick(e) {
   e.preventDefault();
 
   const target = e.target;
+
+  const catItem = target.closest('.categories-itm');
+  if (!catItem) {
+    return;
+  }
+
   const catName = target.dataset.categoryname;
 
-  // Отримуємо контейнер категорій
   const categoriesContainer = await displayCategories();
+  updateCategoryClasses(categoriesContainer, catName);
 
-  // Якщо натиснута категорія "All categories", відображаємо усі книги
   if (catName === 'all categories') {
     displayTopBooks();
   } else {
-    // В іншому випадку відображаємо книги за вибраною категорією
     await displayBooksByCategory(categoriesContainer, catName);
   }
 }
 
-// Функція для відображення книг за вибраною категорією - ПРАЦЮЄЄЄЄ
-async function displayBooksByCategory(categoriesContainer, catName) {
-  const booksContainer = document.querySelector('.books-box');
-  if (!booksContainer) {
-    console.error('Element with class "books-category-box" not found.');
-    return;
+//button see more
+document.addEventListener('click', handleSeeMoreClick);
+async function handleSeeMoreClick(event) {
+  if (event.target && event.target.classList.contains('books-btn-see-more')) {
+    const catName = event.target.dataset.categoryname;
+    console.log(catName);
+
+    await displayBooksByCategory(null, catName);
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    const categoriesContainer = await displayCategories();
+
+    updateCategoryClasses(categoriesContainer, catName);
   }
-  // Отримуємо книги за вибраною категорією
-  const renderedBooks = await getBooksByCategory(catName);
-
-  // Відображаємо книги на сторінці
-  booksContainer.innerHTML = renderedBooks;
-  console.log(renderedBooks);
 }
 
+// show books by category
+async function displayBooksByCategory(categoriesContainer, catName) {
+  showLoader();
+  try {
+    const booksContainer = document.querySelector('.books-box');
+    const newWindowWidth = window.innerWidth;
+    ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
+    const booksPerRow = ctrlBreikpoint;
+    if (!booksContainer) {
+      console.error('Element not found.');
+      return;
+    }
+    const renderedBooks = await getBooksByCategory(catName);
+
+    booksContainer.innerHTML = renderedBooks;
+    console.log(renderedBooks);
+  } catch (error) {
+    console.error('Error displaying books by category:', error);
+  } finally {
+    hideLoader();
+  }
+}
+
+//show best sellers books
 async function displayTopBooks() {
-  const booksPerRow = 5; // Задаємо кількість книг на рядок
-  const topBooksContainer = document.querySelector('.books-box');
+  showLoader();
+  try {
+    const topBooksContainer = document.querySelector('.books-box');
+    const newWindowWidth = window.innerWidth;
+    ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
+    const booksPerRow = ctrlBreikpoint;
+    const renderedBooks = await getTopBooks(booksPerRow);
 
-  // Отримуємо популярні книги
-  const renderedBooks = await getTopBooks(booksPerRow);
-
-  // Відображаємо книги на сторінці
-  topBooksContainer.innerHTML = renderedBooks;
+    topBooksContainer.innerHTML = renderedBooks;
+  } catch (error) {
+    console.error('Error displaying top books:', error);
+  } finally {
+    hideLoader();
+  }
 }
-// Відображаємо популярні книги та категорії при завантаженні сторінки
+
 displayTopBooks();
 displayCategories();
+
+//function update category classes categories-itm
+function updateCategoryClasses(categoriesContainer, catName) {
+  const categoriesItems =
+    categoriesContainer.querySelectorAll('.categories-itm');
+  categoriesItems.forEach(item => {
+    if (item.firstElementChild.dataset.categoryname === catName) {
+      item.classList.add('js-categories-current');
+    } else {
+      item.classList.remove('js-categories-current');
+    }
+  });
+}
