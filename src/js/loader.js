@@ -1,6 +1,6 @@
 'use strict';
 
-const loaderContainer = document.querySelector('.loader-container');
+const loaderContainer = document.querySelector('.loader');
 
 export function showLoader() {
   loaderContainer.classList.remove('visually-hidden');
