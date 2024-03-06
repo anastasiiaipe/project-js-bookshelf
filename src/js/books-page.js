@@ -55,7 +55,8 @@ async function handleCategoryClick(e) {
 
   const catName = target.dataset.categoryname;
 
-  const categoriesContainer = await displayCategories();
+  // const categoriesContainer = await displayCategories();
+  const categoriesContainer = document.querySelector('.categories-list');
   updateCategoryClasses(categoriesContainer, catName);
 
   if (catName === 'all categories') {
@@ -79,8 +80,8 @@ async function handleSeeMoreClick(event) {
       behavior: 'smooth',
     });
 
-    const categoriesContainer = await displayCategories();
-
+    // const categoriesContainer = await displayCategories();
+const categoriesContainer = document.querySelector('.categories-list');
     updateCategoryClasses(categoriesContainer, catName);
   }
 }
@@ -105,6 +106,8 @@ async function displayBooksByCategory(categoriesContainer, catName) {
     console.error('Error displaying books by category:', error);
   } finally {
     hideLoader();
+    const categoriesContainer = document.querySelector('.categories-list');
+    displayCategories(categoriesContainer);
   }
 }
 
@@ -123,6 +126,8 @@ async function displayTopBooks() {
     console.error('Error displaying top books:', error);
   } finally {
     hideLoader();
+    const categoriesContainer = document.querySelector('.categories-list');
+    displayCategories(categoriesContainer);
   }
 }
 
