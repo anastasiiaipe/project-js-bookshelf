@@ -126,8 +126,11 @@ async function displayTopBooks() {
   }
 }
 
-displayTopBooks();
-displayCategories();
+
+window.addEventListener('load', () => {
+  displayTopBooks();
+  displayCategories();
+});
 
 //function update category classes categories-itm
 function updateCategoryClasses(categoriesContainer, catName) {
