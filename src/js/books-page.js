@@ -96,6 +96,7 @@ async function displayBooksByCategory(categoriesContainer, catName) {
     }
       const renderedBooks = await getBooksByCategory(catName);
      booksContainer.innerHTML = renderedBooks;
+    booksTitleSpan();
     console.log(renderedBooks);
   } catch (error) {
     console.error('Error displaying books by category:', error);
@@ -114,6 +115,7 @@ async function displayTopBooks() {
     const renderedBooks = await getTopBooks(booksPerRow);
 
     topBooksContainer.innerHTML = renderedBooks;
+    booksTitleSpan();
   } catch (error) {
     console.error('Error displaying top books:', error);
   } finally {
@@ -138,4 +140,14 @@ function updateCategoryClasses(categoriesContainer, catName) {
       item.classList.remove('js-categories-current');
     }
   });
+}
+
+async function booksTitleSpan() {
+    const booksTitle = document.querySelector('.books-box-title');
+    const titleSpan = booksTitle.titleSpan.split(" ");
+    const lastWord = titleSpan.pop();
+
+    const updateTitleSpan = titleSpan.join(" ") + (titleSpan.length > 0 ? ` <span class="books-title-color">${lastWord}</span>` : lastWord);
+
+    booksTitle.innerHTML = updateTitleSpan;
 }
