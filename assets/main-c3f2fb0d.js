@@ -1,0 +1,26 @@
+import{i as L,a as y}from"./vendor-8cce9181.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))t(s);new MutationObserver(s=>{for(const n of s)if(n.type==="childList")for(const i of n.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&t(i)}).observe(document,{childList:!0,subtree:!0});function o(s){const n={};return s.integrity&&(n.integrity=s.integrity),s.referrerPolicy&&(n.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?n.credentials="include":s.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function t(s){if(s.ep)return;s.ep=!0;const n=o(s);fetch(s.href,n)}})();const b=document.querySelector(".loader");function l(){b.classList.remove("visually-hidden")}function d(){b.classList.add("visually-hidden")}l();window.addEventListener("load",()=>{setTimeout(()=>{d()},350)});function B(){window.scrollTo({top:0,behavior:"smooth"})}const a=document.querySelector(".top-btn");a.style.display="none";window.addEventListener("scroll",()=>{window.scrollY>window.innerHeight?a.style.display="inline-flex":a.style.display="none"});a.addEventListener("click",B);function p(e){return e.map(o=>{const{_id:t,book_image:s,title:n,author:i}=o;return`<li class="books-box-itm" id="${t}">
+      <div class="books-box-wrap">
+              <img
+                class="books-img"
+                src="${s}"
+                alt="${n}"
+              />
+              <div class="books-overlay">
+                <a href="#" data-id="${t}" class="books-overlay-text">
+                quick view </a>
+              </div>
+            </div>
+            <div class="books-box-desc">
+              <p class="books-box-desc-title">${n}</p>
+              <p class="books-box-desc-author">${i}</p>
+            </div> 
+            </li>`}).join("")}const C=(e,r)=>{if(!e||e.length===0){k("Sorry, books not found");return}else return`<h2 class="books-box-title">Best Sellers Books</h2>${e.map(t=>{const s=t.list_name,n=p(t.books.slice(0,r));return`<div class="books-box-holder">
+        <h3 class="books-box-subtitle">${s}</h3>
+         <ul class="books-box-list">${n}</ul>
+           <button data-categoryName="${s}" class="books-btn-see-more" type="button">see more</button>
+      </div>`}).join("")}`},S=e=>` <li class="categories-itm js-categories-current ">
+  <a href="#" data-categoryName="all categories">All categories</a></li>${e.sort((o,t)=>o.list_name<t.list_name?-1:o.list_name>t.list_name?1:0).map(o=>`<li class="categories-itm"><a href="#" data-categoryName="${o.list_name}">${o.list_name}</a></li>`).join("")}`,E=(e,r)=>{if(!e||e.length===0){k("Sorry, category of book not found");return}else{const o=p(e);return`<h2 class="books-box-title">${r}</h2>
+    <div class="books-category-box">
+      <ul class="books-category-list">${o}</ul>
+    </div>`}};function k(e){L.error({message:e,messageColor:"white",backgroundColor:"red",position:"topRight"})}const m="https://books-backend.p.goit.global",x=async e=>{const o=m+"/books/top-books/";try{const t=await y.get(o);return C(t.data,e)}catch(t){return console.error("Error fetching top books:",t),""}},T=async()=>{const r=m+"/books/category-list/";try{const o=await y.get(r);return S(o.data)}catch(o){console.error("Error fetching category list:",o)}},$=async e=>{const o=m+"/books/category/",t={category:e};try{const s=await y.get(o,{params:t});return E(s.data,e)}catch(s){console.error("Error fetching books by category:",s)}},g={default:3,largeScreen:5,smallScreen:1};function u(e){return e>=1440?g.largeScreen:e<768?g.smallScreen:g.default}const _=window.innerWidth;let c=u(_);window.addEventListener("resize",()=>{const e=window.innerWidth;c=u(e)});async function f(){l();const e=document.querySelector(".categories-list"),r=await T();return e.innerHTML=r,e.addEventListener("click",q),d(),e}async function q(e){e.preventDefault();const r=e.target;if(!r.closest(".categories-itm"))return;const t=r.dataset.categoryname,s=document.querySelector(".categories-list");v(s,t),t==="all categories"?w():await h(s,t)}document.addEventListener("click",W);async function W(e){if(e.target&&e.target.classList.contains("books-btn-see-more")){const r=e.target.dataset.categoryname;console.log(r),await h(null,r),window.scrollTo({top:0,behavior:"smooth"});const o=document.querySelector(".categories-list");v(o,r)}}async function h(e,r){l();try{const o=document.querySelector(".books-box"),t=window.innerWidth;c=u(t);const s=c;if(!o){console.error("Element not found.");return}const n=await $(r);o.innerHTML=n,console.log(n)}catch(o){console.error("Error displaying books by category:",o)}finally{d(),document.querySelector(".categories-list"),f()}}async function w(){l();try{const e=document.querySelector(".books-box"),r=window.innerWidth;c=u(r);const t=await x(c);e.innerHTML=t}catch(e){console.error("Error displaying top books:",e)}finally{d(),document.querySelector(".categories-list"),f()}}window.addEventListener("load",()=>{w(),f()});function v(e,r){e.querySelectorAll(".categories-itm").forEach(t=>{t.firstElementChild.dataset.categoryname===r?t.classList.add("js-categories-current"):t.classList.remove("js-categories-current")})}
+//# sourceMappingURL=main-c3f2fb0d.js.map
