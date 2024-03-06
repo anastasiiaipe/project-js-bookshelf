@@ -23,19 +23,18 @@ function determineBooksPerRow(windowWidth) {
   }
 }
 
-const windowWidthStart = window.innerWidth;
+// const windowWidthStart = window.innerWidth;
 let ctrlBreikpoint = determineBooksPerRow(windowWidthStart);
 
 window.addEventListener('resize', () => {
-  const newWindowWidth = window.innerWidth;
-  ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
+  // const newWindowWidth = window.innerWidth;
+  ctrlBreikpoint = determineBooksPerRow(window.innerWidth);
 });
 
 //function show category
 async function displayCategories() {
   showLoader();
   const categoriesContainer = document.querySelector('.categories-list');
-
   const renderedCategories = await getCategoryList();
   categoriesContainer.innerHTML = renderedCategories;
   categoriesContainer.addEventListener('click', handleCategoryClick);
@@ -47,23 +46,23 @@ async function handleCategoryClick(e) {
   e.preventDefault();
 
   const target = e.target;
-
   const catItem = target.closest('.categories-itm');
   if (!catItem) {
     return;
   }
 
   const catName = target.dataset.categoryname;
-
-  const categoriesContainer = await displayCategories();
-  updateCategoryClasses(categoriesContainer, catName);
-showLoader();
+ showLoader();
+//   const categoriesContainer = await displayCategories();
+//   updateCategoryClasses(categoriesContainer, catName);
+// showLoader();
   
   if (catName === 'all categories') {
     displayTopBooks();
   } else {
     await displayBooksByCategory(categoriesContainer, catName);
   }
+  updateCategoryClasses(catName);
 }
 
 //button see more
