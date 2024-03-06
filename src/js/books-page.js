@@ -23,11 +23,11 @@ function determineBooksPerRow(windowWidth) {
   }
 }
 
-// const windowWidthStart = window.innerWidth;
+const windowWidthStart = window.innerWidth;
 let ctrlBreikpoint = determineBooksPerRow(windowWidthStart);
 
 window.addEventListener('resize', () => {
-  // const newWindowWidth = window.innerWidth;
+  const newWindowWidth = window.innerWidth;
   ctrlBreikpoint = determineBooksPerRow(window.innerWidth);
 });
 
@@ -52,17 +52,16 @@ async function handleCategoryClick(e) {
   }
 
   const catName = target.dataset.categoryname;
- showLoader();
-//   const categoriesContainer = await displayCategories();
-//   updateCategoryClasses(categoriesContainer, catName);
-// showLoader();
+
+  const categoriesContainer = await displayCategories();
+  updateCategoryClasses(categoriesContainer, catName);
+showLoader();
   
   if (catName === 'all categories') {
     displayTopBooks();
   } else {
     await displayBooksByCategory(categoriesContainer, catName);
   }
-  updateCategoryClasses(catName);
 }
 
 //button see more
@@ -88,9 +87,6 @@ async function displayBooksByCategory(categoriesContainer, catName) {
   showLoader();
   try {
     const booksContainer = document.querySelector('.books-box');
-       const renderedBooks = await getBooksByCategory(catName);
- booksContainer.innerHTML = renderedBooks;
-    console.log(renderedBooks);
     // const newWindowWidth = window.innerWidth;
     // ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
     // const booksPerRow = ctrlBreikpoint;
@@ -98,6 +94,9 @@ async function displayBooksByCategory(categoriesContainer, catName) {
       console.error('Element not found.');
       return;
     }
+      const renderedBooks = await getBooksByCategory(catName);
+     booksContainer.innerHTML = renderedBooks;
+    console.log(renderedBooks);
   } catch (error) {
     console.error('Error displaying books by category:', error);
   } finally {
@@ -109,6 +108,8 @@ async function displayBooksByCategory(categoriesContainer, catName) {
 async function displayTopBooks() {
   try {
     const topBooksContainer = document.querySelector('.books-box');
+     const newWindowWidth = window.innerWidth;
+      ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
     const booksPerRow = ctrlBreikpoint;
     const renderedBooks = await getTopBooks(booksPerRow);
 
