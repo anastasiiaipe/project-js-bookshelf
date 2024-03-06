@@ -57,7 +57,8 @@ async function handleCategoryClick(e) {
 
   const categoriesContainer = await displayCategories();
   updateCategoryClasses(categoriesContainer, catName);
-
+showLoader();
+  
   if (catName === 'all categories') {
     displayTopBooks();
   } else {
@@ -70,8 +71,7 @@ document.addEventListener('click', handleSeeMoreClick);
 async function handleSeeMoreClick(event) {
   if (event.target && event.target.classList.contains('books-btn-see-more')) {
     const catName = event.target.dataset.categoryname;
-    console.log(catName);
-
+  showLoader(); 
     await displayBooksByCategory(null, catName);
 
     window.scrollTo({
@@ -86,7 +86,7 @@ async function handleSeeMoreClick(event) {
 
 // show books by category
 async function displayBooksByCategory(categoriesContainer, catName) {
-  showLoader();
+  // showLoader();
   try {
     const booksContainer = document.querySelector('.books-box');
     const newWindowWidth = window.innerWidth;
@@ -109,7 +109,7 @@ async function displayBooksByCategory(categoriesContainer, catName) {
 
 //show best sellers books
 async function displayTopBooks() {
-  showLoader();
+  // showLoader();
   try {
     const topBooksContainer = document.querySelector('.books-box');
     const newWindowWidth = window.innerWidth;
