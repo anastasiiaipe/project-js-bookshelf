@@ -86,12 +86,12 @@ async function handleSeeMoreClick(event) {
 
 // show books by category
 async function displayBooksByCategory(categoriesContainer, catName) {
-  // showLoader();
+  showLoader();
   try {
     const booksContainer = document.querySelector('.books-box');
-    const newWindowWidth = window.innerWidth;
-    ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
-    const booksPerRow = ctrlBreikpoint;
+    // const newWindowWidth = window.innerWidth;
+    // ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
+    // const booksPerRow = ctrlBreikpoint;
     if (!booksContainer) {
       console.error('Element not found.');
       return;
@@ -109,7 +109,7 @@ async function displayBooksByCategory(categoriesContainer, catName) {
 
 //show best sellers books
 async function displayTopBooks() {
-  // showLoader();
+  showLoader();
   try {
     const topBooksContainer = document.querySelector('.books-box');
     const newWindowWidth = window.innerWidth;
