@@ -88,6 +88,9 @@ async function displayBooksByCategory(categoriesContainer, catName) {
   showLoader();
   try {
     const booksContainer = document.querySelector('.books-box');
+       const renderedBooks = await getBooksByCategory(catName);
+ booksContainer.innerHTML = renderedBooks;
+    console.log(renderedBooks);
     // const newWindowWidth = window.innerWidth;
     // ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
     // const booksPerRow = ctrlBreikpoint;
@@ -95,10 +98,6 @@ async function displayBooksByCategory(categoriesContainer, catName) {
       console.error('Element not found.');
       return;
     }
-    const renderedBooks = await getBooksByCategory(catName);
-
-    booksContainer.innerHTML = renderedBooks;
-    console.log(renderedBooks);
   } catch (error) {
     console.error('Error displaying books by category:', error);
   } finally {
@@ -108,11 +107,8 @@ async function displayBooksByCategory(categoriesContainer, catName) {
 
 //show best sellers books
 async function displayTopBooks() {
-  showLoader();
   try {
     const topBooksContainer = document.querySelector('.books-box');
-    const newWindowWidth = window.innerWidth;
-    ctrlBreikpoint = determineBooksPerRow(newWindowWidth);
     const booksPerRow = ctrlBreikpoint;
     const renderedBooks = await getTopBooks(booksPerRow);
 
