@@ -7,56 +7,72 @@ import {
 
 const BASE_URL = 'https://books-backend.p.goit.global';
 
-const CACHE_KEY_TOP = 'topBooksData';
-export const getTopBooks = async displayMode => {
-  try {
-    const cachedData = sessionStorage.getItem(CACHE_KEY_TOP);
-    if (cachedData) {
-      return renderTopBooks(JSON.parse(cachedData), displayMode);
-    }
+// const CACHE_KEY_TOP = 'topBooksData';
+// export const getTopBooks = async displayMode => {
+//   try {
+//     const cachedData = sessionStorage.getItem(CACHE_KEY_TOP);
+//     if (cachedData) {
+//       return renderTopBooks(JSON.parse(cachedData), displayMode);
+//     }
 
-    const endpoint = '/books/top-books/';
+//     const endpoint = '/books/top-books/';
+//     const fetchUrl = BASE_URL + endpoint;
+//     const response = await axios.get(fetchUrl);
+
+//     sessionStorage.setItem(CACHE_KEY_TOP, JSON.stringify(response.data));
+
+//     return renderTopBooks(responseData, displayMode);
+//   } catch (error) {
+//     console.error('Error fetching top books:', error);
+//     return '';
+//   }
+// };
+
+
+export const getTopBooks = async booksPerRow => {
+     const endpoint = '/books/top-books/';
     const fetchUrl = BASE_URL + endpoint;
+  
+  try {
     const response = await axios.get(fetchUrl);
-
-    sessionStorage.setItem(CACHE_KEY_TOP, JSON.stringify(response.data));
-
-    return renderTopBooks(responseData, displayMode);
+    return renderTopBooks(response.data, booksPerRow);
   } catch (error) {
     console.error('Error fetching top books:', error);
     return '';
   }
 };
 
-const CACHE_KEY_LIST = 'categoryListData';
 export const getCategoryList = async () => {
-  try {
-    const cachedData = sessionStorage.getItem(CACHE_KEY_LIST);
-    if (cachedData) {
-      return renderCategoriesList(JSON.parse(cachedData));
-    }
+  const endpoint = '/books/category-list/';
+  const fetchUrl = BASE_URL + endpoint;
 
-    const endpoint = '/books/category-list/';
-    const fetchUrl = BASE_URL + endpoint;
+  try {
     const response = await axios.get(fetchUrl);
-    sessionStorage.setItem(CACHE_KEY_LIST, JSON.stringify(response.data));
     return renderCategoriesList(response.data);
   } catch (error) {
-    console.error('Error fetching category list:', error);
+   console.error('Error fetching category list:', error);
   }
 };
 
-// export const getCategoryList = async () => {
-//   const endpoint = '/books/category-list/';
-//   const fetchUrl = BASE_URL + endpoint;
 
+// const CACHE_KEY_LIST = 'categoryListData';
+// export const getCategoryList = async () => {
 //   try {
+//     const cachedData = sessionStorage.getItem(CACHE_KEY_LIST);
+//     if (cachedData) {
+//       return renderCategoriesList(JSON.parse(cachedData));
+//     }
+
+//     const endpoint = '/books/category-list/';
+//     const fetchUrl = BASE_URL + endpoint;
 //     const response = await axios.get(fetchUrl);
+//     sessionStorage.setItem(CACHE_KEY_LIST, JSON.stringify(response.data));
 //     return renderCategoriesList(response.data);
 //   } catch (error) {
-//     console.log(error);
+//     console.error('Error fetching category list:', error);
 //   }
 // };
+
 
 export const getBooksByCategory = async categoryName => {
   const endpoint = '/books/category/';
