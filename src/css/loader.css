@@ -13,7 +13,7 @@
   align-content: center;
   justify-content: center;
   
-  z-index: 1001;
+/*   z-index: 1001; */
 }
 
 .loader {
