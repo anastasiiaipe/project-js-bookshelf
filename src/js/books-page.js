@@ -147,7 +147,7 @@ async function booksTitleSpan() {
     const titleSpan = booksTitle.titleSpan.split(" ");
     const lastWord = titleSpan.pop();
 
-    const updateTitleSpan = titleSpan.join(" ") + (titleSpan.length > 0 ? ` <span class="books-title-color">${lastWord}</span>` : lastWord);
+    const updateTitleSpan = titleSpan.join(" ") + (titleSpan.length > 0 ? ` <span class="books-title-span">${lastWord}</span>` : lastWord);
 
     booksTitle.innerHTML = updateTitleSpan;
 }
